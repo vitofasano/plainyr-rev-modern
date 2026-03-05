@@ -1,3 +1,8 @@
+%% 2026-03-05
+%% Updated to version 0.2: 
+%% - Fixed issue with underscores in DOI by using \nolinkurl
+%% - Updated DOI provider to https://doi.org/
+%% ---------------------------------------------------------------------------------
 %% 2015-03-12
 %% I changed the BibTeX style by adding doi support inspired by: http://eptcs.web.cse.unsw.edu.au/eptcsalpha.bst
 %% Contributed by Vito Fasano: 12 March 2015
@@ -1326,13 +1331,7 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "\providecommand{\url}[1]{\texttt{#1}}"
-  write$ newline$
-  "\providecommand{\href}[2]{\texttt{#2}}"
-  write$ newline$
-  "\providecommand{\urlalt}[2]{\href{#1}{#2}}"
-  write$ newline$
-  "\providecommand{\doi}[1]{\textsc{doi}:~\urlalt{http://dx.doi.org/#1}{#1}}"
+  "\providecommand{\doi}[1]{\textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}}"
   write$ newline$
 }
 
@@ -1349,4 +1348,5 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
