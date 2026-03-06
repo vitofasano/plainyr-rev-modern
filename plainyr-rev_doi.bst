@@ -1,4 +1,9 @@
 %% 2026-03-06
+%% Version 0.2.2: Cleaned DOI implementation.
+%% - Requires \usepackage{hyperref} in the LaTeX preamble to correctly 
+%%   handle underscores and provide clickable links.
+%% ---------------------------------------------------------------------------------
+%% 2026-03-06
 %% Version 0.2.1: Improved DOI robustness. 
 %% - Added a check for the 'hyperref' package.
 %% - If 'hyperref' is loaded, DOIs are clickable and handle underscores via \nolinkurl.
@@ -1340,13 +1345,9 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "% Support for DOI with or without hyperref" write$ newline$
+  "% DOI support (requires hyperref package)" write$ newline$
   "\providecommand{\doi}[1]{%" write$ newline$
-  "  \ifx\href\undefined" write$ newline$
-  "    \textsc{doi}:~\texttt{#1}%" write$ newline$
-  "  \else" write$ newline$
-  "    \textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}%" write$ newline$
-  "  \fi" write$ newline$
+  "  \textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}%" write$ newline$
   "}" write$ newline$
 }
 
@@ -1363,6 +1364,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
