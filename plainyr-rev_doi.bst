@@ -1,3 +1,8 @@
+%% 2026-03-06
+%% Version 0.2.1: Improved DOI robustness. 
+%% Added check for hyperref package; if missing, falls back to safe texttt format to prevent 'undefined control sequence' errors. 
+%% Updated DOI URL to https://doi.org/.
+%% ---------------------------------------------------------------------------------
 %% 2026-03-05
 %% Updated to version 0.2: 
 %% - Fixed issue with underscores in DOI by using \nolinkurl
@@ -1331,8 +1336,14 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "\providecommand{\doi}[1]{\textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}}"
-  write$ newline$
+  "% Support for DOI with or without hyperref" write$ newline$
+  "\providecommand{\doi}[1]{%" write$ newline$
+  "  \ifx\href\undefined" write$ newline$
+  "    \textsc{doi}:~\texttt{#1}%" write$ newline$
+  "  \else" write$ newline$
+  "    \textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}%" write$ newline$
+  "  \fi" write$ newline$
+  "}" write$ newline$
 }
 
 EXECUTE {begin.bib}
@@ -1348,5 +1359,6 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
