@@ -1,3 +1,22 @@
+%% 2026-03-06
+%% Version 0.2.2: Cleaned DOI implementation.
+%% - Requires \usepackage{hyperref} in the LaTeX preamble to correctly 
+%%   handle underscores and provide clickable links.
+%% ---------------------------------------------------------------------------------
+%% 2026-03-06
+%% Version 0.2.1: Improved DOI robustness. 
+%% - Added a check for the 'hyperref' package.
+%% - If 'hyperref' is loaded, DOIs are clickable and handle underscores via \nolinkurl.
+%% - If 'hyperref' is missing, it falls back to a safe \texttt format.
+%% - NOTE: Using \usepackage{hyperref} in your .tex preamble is highly recommended 
+%%   for the best visual and functional results.
+%% - Updated DOI URL to https://doi.org/.
+%% ---------------------------------------------------------------------------------
+%% 2026-03-05
+%% Updated to version 0.2: 
+%% - Fixed issue with underscores in DOI by using \nolinkurl
+%% - Updated DOI provider to https://doi.org/
+%% ---------------------------------------------------------------------------------
 %% 2015-03-12
 %% I changed the BibTeX style by adding doi support inspired by: http://eptcs.web.cse.unsw.edu.au/eptcsalpha.bst
 %% Contributed by Vito Fasano: 12 March 2015
@@ -1326,14 +1345,10 @@ FUNCTION {begin.bib}
     { preamble$ write$ newline$ }
   if$
   "\begin{thebibliography}{"  longest.label  * "}" * write$ newline$
-  "\providecommand{\url}[1]{\texttt{#1}}"
-  write$ newline$
-  "\providecommand{\href}[2]{\texttt{#2}}"
-  write$ newline$
-  "\providecommand{\urlalt}[2]{\href{#1}{#2}}"
-  write$ newline$
-  "\providecommand{\doi}[1]{\textsc{doi}:~\urlalt{http://dx.doi.org/#1}{#1}}"
-  write$ newline$
+  "% DOI support (requires hyperref package)" write$ newline$
+  "\providecommand{\doi}[1]{%" write$ newline$
+  "  \textsc{doi}:~\href{https://doi.org/#1}{\nolinkurl{#1}}%" write$ newline$
+  "}" write$ newline$
 }
 
 EXECUTE {begin.bib}
@@ -1349,4 +1364,8 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
+
+
+
 
