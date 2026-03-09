@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref} % Fondamentale per i DOI!
+
+\title{Test: plainyr-rev-modern style}
+\author{Vito Fasano}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Testing Citations}
+This document demonstrates the \texttt{plainyr-rev-modern} BibTeX style.
+Here is a recent paper \cite{ModernApproach2026}, an article with a complex DOI containing underscores \cite{UnderscoreTest2024}, and an older work \cite{LegacyPaper1990} to verify the reverse chronological sorting.
+
+\bibliographystyle{../plainyr-rev-modern}
+\bibliography{example}
+
+\end{document}
