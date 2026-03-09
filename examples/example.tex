@@ -1,4 +1,37 @@
+% example.tex
+% Minimal Working Example (MWE) for plainyr-rev-modern.bst
 \documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Mandatory: hyperref is required to handle underscores in DOIs and create links
+\usepackage{hyperref} 
+
+\title{Testing the \texttt{plainyr-rev-modern} BibTeX Style}
+\author{Vito Fasano}
+\date{March 2026}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+This document demonstrates the main features of the \texttt{plainyr-rev-modern} style:
+\begin{itemize}
+    \item \textbf{Reverse Chronological Order:} Newer papers appear first.
+    \item \textbf{DOI Support:} Handles special characters like underscores (\_) correctly.
+    \item \textbf{Clickable Links:} Automatic linking via the \texttt{https://doi.org/} resolver.
+\end{itemize}
+
+\section{Citations}
+Here we cite a very recent paper \cite{ModernApproach2026}, an article with a complex DOI \cite{UnderscoreTest2024}, and an older reference \cite{LegacyPaper1990} to check the sorting algorithm.
+
+% Important: Since this file is in the 'examples/' folder, 
+% we point to the .bst file in the parent directory.
+\bibliographystyle{../plainyr-rev-modern}
+\bibliography{example}
+
+\end{document}\documentclass{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{hyperref} % Fondamentale per i DOI!
