@@ -1,3 +1,17 @@
+%% plainyr-rev-modern.bst
+%% A modernized version of plainyr.bst with reverse chronological order.
+%% Includes robust DOI support (requires hyperref).
+%% Contributed by Vito Fasano: 12 March 2015
+%% vito.fasano@gmail.com
+%%
+%%
+%% 2026-03-09
+%% Version 0.2.3
+%% v0.2.3: Project modernization and rebranding
+%% - Renamed style file to plainyr-rev-modern.bst for better clarity.
+%% - Updated internal header to reflect reverse chronological ordering and DOI requirements.
+%% - Preparations for enhanced documentation and examples.
+%% ---------------------------------------------------------------------------------
 %% 2026-03-06
 %% Version 0.2.2: Cleaned DOI implementation.
 %% - Requires \usepackage{hyperref} in the LaTeX preamble to correctly 
@@ -1364,6 +1378,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
