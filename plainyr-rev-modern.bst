@@ -669,7 +669,7 @@ FUNCTION {article}
   format.doi output
   new.block
   note output
-  format.url 
+  format.url output
   fin.entry
 }
 
@@ -704,7 +704,7 @@ FUNCTION {book}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -721,7 +721,7 @@ FUNCTION {booklet}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -758,7 +758,7 @@ FUNCTION {inbook}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -787,7 +787,7 @@ FUNCTION {incollection}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -824,7 +824,7 @@ FUNCTION {inproceedings}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -863,7 +863,7 @@ FUNCTION {manual}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -881,7 +881,7 @@ FUNCTION {mastersthesis}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -897,7 +897,7 @@ FUNCTION {misc}
   note output
   format.doi output
   new.block
-  format.url
+  format.url output
   fin.entry
   empty.misc.check
 }
@@ -916,7 +916,7 @@ FUNCTION {phdthesis}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -954,7 +954,7 @@ FUNCTION {proceedings}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -972,7 +972,7 @@ FUNCTION {techreport}
   format.doi output
   new.block
   note output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -984,7 +984,7 @@ FUNCTION {unpublished}
   new.block
   note "note" output.check
   format.date output
-  format.url
+  format.url output
   fin.entry
 }
 
@@ -1399,6 +1399,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
