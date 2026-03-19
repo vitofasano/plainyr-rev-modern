@@ -1,10 +1,17 @@
 %% plainyr-rev-modern.bst
-%% A modernized version of plainyr.bst with reverse chronological order.
-%% Includes robust DOI support (requires hyperref).
-%% Contributed by Vito Fasano: 12 March 2015
+%% A modernized version of plainyr with reverse chronological order, 
+%% robust DOI support, and URL support (requires hyperref).
+%% Contributed by Vito Fasano: 19 March 2026
 %% vito.fasano@gmail.com
 %%
 %%
+%% 2026-03-19
+%% Version 0.2.4
+%% v0.2.4: Added URL field support and expanded test suite
+%% - Implemented 'url' field handling with \url{} command.
+%% - Added URL support to 'article', 'book', and 'inproceedings' entry types.
+%% - Updated example bibliography with diverse entry types (v0.2.4).
+%% ---------------------------------------------------------------------------
 %% 2026-03-09
 %% Version 0.2.3
 %% v0.2.3: Project modernization and rebranding
@@ -1399,6 +1406,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
