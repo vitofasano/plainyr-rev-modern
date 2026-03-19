@@ -126,6 +126,7 @@ ENTRY
     series
     title
     type
+	url
     volume
     year
   }
@@ -333,6 +334,13 @@ FUNCTION {format.doi}
     {
       "\doi{" swap$ * "}" *
     }
+  if$
+}
+
+FUNCTION {format.url}
+{ url empty$
+    { "" }
+    { new.block "URL \url{" url * "}" * }
   if$
 }
 
@@ -661,6 +669,7 @@ FUNCTION {article}
   format.doi output
   new.block
   note output
+  format.url 
   fin.entry
 }
 
@@ -695,6 +704,7 @@ FUNCTION {book}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -711,6 +721,7 @@ FUNCTION {booklet}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -747,6 +758,7 @@ FUNCTION {inbook}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -775,6 +787,7 @@ FUNCTION {incollection}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -811,6 +824,7 @@ FUNCTION {inproceedings}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -849,6 +863,7 @@ FUNCTION {manual}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -866,6 +881,7 @@ FUNCTION {mastersthesis}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -881,6 +897,7 @@ FUNCTION {misc}
   note output
   format.doi output
   new.block
+  format.url
   fin.entry
   empty.misc.check
 }
@@ -899,6 +916,7 @@ FUNCTION {phdthesis}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -936,6 +954,7 @@ FUNCTION {proceedings}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -953,6 +972,7 @@ FUNCTION {techreport}
   format.doi output
   new.block
   note output
+  format.url
   fin.entry
 }
 
@@ -964,6 +984,7 @@ FUNCTION {unpublished}
   new.block
   note "note" output.check
   format.date output
+  format.url
   fin.entry
 }
 
@@ -1378,6 +1399,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
