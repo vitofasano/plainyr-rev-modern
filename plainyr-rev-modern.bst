@@ -355,7 +355,7 @@ FUNCTION {format.doi}
 FUNCTION {format.url}
 { url empty$ show.url #0 = or
     { "" }
-    { new.block "URL \url{" url * "}" * }
+    { new.block "URL: \url{" url * "}" * }
   if$
 }
 
@@ -1416,14 +1416,3 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
-
-
-
-
-
-
-
-
-
-
-
