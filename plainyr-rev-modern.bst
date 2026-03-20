@@ -1070,9 +1070,9 @@ MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
 
 MACRO {tcs} {"Theoretical Computer Science"}
 
-EXECUTE {setup.options}    % Initializing user options
-
 READ
+
+EXECUTE {setup.options}    % Initializing user options
 
 FUNCTION {sortify}
 { purify$
@@ -1416,6 +1416,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
