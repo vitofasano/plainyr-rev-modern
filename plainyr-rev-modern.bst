@@ -1,15 +1,16 @@
 %% plainyr-rev-modern.bst
 %% A modernized version of plainyr with reverse chronological order, 
 %% robust DOI support, and URL support (requires hyperref).
-%% Contributed by Vito Fasano: 19 March 2026
+%% Contributed by Vito Fasano: 20 March 2026
 %% vito.fasano@gmail.com
 %%
-%%%% 2026-03-20
+%% 2026-03-20
 %% Version 0.2.4
-%% v0.2.4: Added URL field support with global toggle
-%% - Implemented 'show.url' integer toggle in setup.options.
-%% - Updated format.url to respect show.url setting.
-%% - Expanded test suite with diverse entry types.
+%% v0.2.4: Added URL field support with global toggle and UI refinements
+%% - Implemented 'show.url' integer toggle (set to 1 by default).
+%% - Added 'URL:' prefix for consistency with DOI field.
+%% - Fixed 'Illegal execute command' by moving setup.options after READ.
+%% - Expanded test suite with diverse entry types (article, book, inproceedings).
 %% ---------------------------------------------------------------------------
 %% 2026-03-09
 %% Version 0.2.3
@@ -1416,3 +1417,4 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
