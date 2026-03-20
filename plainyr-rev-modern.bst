@@ -4,13 +4,12 @@
 %% Contributed by Vito Fasano: 19 March 2026
 %% vito.fasano@gmail.com
 %%
-%%
-%% 2026-03-19
+%%%% 2026-03-20
 %% Version 0.2.4
-%% v0.2.4: Added URL field support and expanded test suite
-%% - Implemented 'url' field handling with \url{} command.
-%% - Added URL support to 'article', 'book', and 'inproceedings' entry types.
-%% - Updated example bibliography with diverse entry types (v0.2.4).
+%% v0.2.4: Added URL field support with global toggle
+%% - Implemented 'show.url' integer toggle in setup.options.
+%% - Updated format.url to respect show.url setting.
+%% - Expanded test suite with diverse entry types.
 %% ---------------------------------------------------------------------------
 %% 2026-03-09
 %% Version 0.2.3
@@ -139,6 +138,15 @@ ENTRY
   }
   {}
   { label }
+
+INTEGERS { 
+  show.url          % Toggle to show/hide the URL field
+}
+
+FUNCTION {setup.options}
+{ 
+  #1 'show.url :=   % Default: 1 (Show URL). Set to 0 to hide.
+}
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
 
@@ -345,7 +353,7 @@ FUNCTION {format.doi}
 }
 
 FUNCTION {format.url}
-{ url empty$
+{ url empty$ show.url #0 = or
     { "" }
     { new.block "URL \url{" url * "}" * }
   if$
@@ -1062,6 +1070,8 @@ MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
 
 MACRO {tcs} {"Theoretical Computer Science"}
 
+EXECUTE {setup.options}    % Initializing user options
+
 READ
 
 FUNCTION {sortify}
@@ -1406,6 +1416,7 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
+
 
 
 
