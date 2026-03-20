@@ -1,4 +1,4 @@
-# plainyr-rev-modern (v0.2.3)
+# plainyr-rev-modern (v0.2.4)
 
 A modernized version of the `plainyr` BibTeX style, featuring **reverse chronological ordering** (newest to oldest) and enhanced DOI support.
 
@@ -6,6 +6,8 @@ A modernized version of the `plainyr` BibTeX style, featuring **reverse chronolo
 * **Reverse Chronological Order**: Automatically sorts your bibliography starting from the most recent year.
 * **Robust DOI Support**: Perfect handling of special characters (like underscores `_`) in DOI strings.
 * **Clickable Links**: Generates active links via the `https://doi.org/` resolver.
+* **URL Field Support**: Full support for the url field across all standard entry types.
+* **Global Toggles**: Easily enable or disable features (like URLs) by editing a single line in the .bst file.
 
 ## ⚠️ Mandatory Requirement
 To ensure DOIs and underscores are rendered correctly, you **must** include the `hyperref` package in your LaTeX preamble:
@@ -21,6 +23,15 @@ To ensure DOIs and underscores are rendered correctly, you **must** include the 
 ```latex
 \bibliographystyle{plainyr-rev-modern}
 \bibliography{your-bib-file}
+```
+## Customization
+Bibliography behavior can be customized by editing the setup.options function located near the end of the plainyr-rev-modern.bst file (following the READ command):
+
+```bst
+FUNCTION {setup.options}
+{ 
+  #1 'show.url :=   % Set to 1 to show URLs, 0 to hide them
+}
 ```
 
 ## Contributing
