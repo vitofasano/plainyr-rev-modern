@@ -34,7 +34,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 - [x] Add reverse chronological sorting by default
 - [x] Improved DOI support with underscore handling
 - [x] Added `examples/` folder with test suite
-- [x] Add `URL` field support
+- [x] Add `URL` field support (v0.2.4)
 - [ ] Add optional `abstract` field display
 - [ ] Implement author name cleaning/abbreviation (e.g., "V. Fasano")
 - [ ] Add toggle for normal vs. reverse chronological sorting
