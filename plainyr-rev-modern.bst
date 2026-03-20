@@ -1,10 +1,17 @@
 %% plainyr-rev-modern.bst
-%% A modernized version of plainyr.bst with reverse chronological order.
-%% Includes robust DOI support (requires hyperref).
-%% Contributed by Vito Fasano: 12 March 2015
+%% A modernized version of plainyr with reverse chronological order, 
+%% robust DOI support, and URL support (requires hyperref).
+%% Contributed by Vito Fasano: 20 March 2026
 %% vito.fasano@gmail.com
 %%
-%%
+%% 2026-03-20
+%% Version 0.2.4
+%% v0.2.4: Added URL field support with global toggle and UI refinements
+%% - Implemented 'show.url' integer toggle (set to 1 by default).
+%% - Added 'URL:' prefix for consistency with DOI field.
+%% - Fixed 'Illegal execute command' by moving setup.options after READ.
+%% - Expanded test suite with diverse entry types (article, book, inproceedings).
+%% ---------------------------------------------------------------------------
 %% 2026-03-09
 %% Version 0.2.3
 %% v0.2.3: Project modernization and rebranding
@@ -126,11 +133,21 @@ ENTRY
     series
     title
     type
+	url
     volume
     year
   }
   {}
   { label }
+
+INTEGERS { 
+  show.url          % Toggle to show/hide the URL field
+}
+
+FUNCTION {setup.options}
+{ 
+  #1 'show.url :=   % Default: 1 (Show URL). Set to 0 to hide.
+}
 
 INTEGERS { output.state before.all mid.sentence after.sentence after.block }
 
@@ -333,6 +350,13 @@ FUNCTION {format.doi}
     {
       "\doi{" swap$ * "}" *
     }
+  if$
+}
+
+FUNCTION {format.url}
+{ url empty$ show.url #0 = or
+    { "" }
+    { new.block "URL: \url{" url * "}" * }
   if$
 }
 
@@ -661,6 +685,7 @@ FUNCTION {article}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -695,6 +720,7 @@ FUNCTION {book}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -711,6 +737,7 @@ FUNCTION {booklet}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -747,6 +774,7 @@ FUNCTION {inbook}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -775,6 +803,7 @@ FUNCTION {incollection}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -811,6 +840,7 @@ FUNCTION {inproceedings}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -849,6 +879,7 @@ FUNCTION {manual}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -866,6 +897,7 @@ FUNCTION {mastersthesis}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -881,6 +913,7 @@ FUNCTION {misc}
   note output
   format.doi output
   new.block
+  format.url output
   fin.entry
   empty.misc.check
 }
@@ -899,6 +932,7 @@ FUNCTION {phdthesis}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -936,6 +970,7 @@ FUNCTION {proceedings}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -953,6 +988,7 @@ FUNCTION {techreport}
   format.doi output
   new.block
   note output
+  format.url output
   fin.entry
 }
 
@@ -964,6 +1000,7 @@ FUNCTION {unpublished}
   new.block
   note "note" output.check
   format.date output
+  format.url output
   fin.entry
 }
 
@@ -1035,6 +1072,8 @@ MACRO {toplas} {"ACM Transactions on Programming Languages and Systems"}
 MACRO {tcs} {"Theoretical Computer Science"}
 
 READ
+
+EXECUTE {setup.options}    % Initializing user options
 
 FUNCTION {sortify}
 { purify$
@@ -1378,9 +1417,4 @@ FUNCTION {end.bib}
 }
 
 EXECUTE {end.bib}
-
-
-
-
-
 
